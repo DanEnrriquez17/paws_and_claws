@@ -26,11 +26,14 @@ class AdoptionRequestsController < ApplicationController
       redirect_to pet_path(@pet)
       # we should add an alert that indicates request for adoption has been submitted
     else
-      render :new, status: :unprocessable_entity
+      # I don't know if the render partial will work
+      redirect_to new_pet_adoption_request(@request), status: :unprocessable_entity
     end
   end
 
   def destroy
+    @request.destroy
+    redirect_to pet_path(@request.pet) # we should add an alert message here 'status: :see_other'
   end
 
   private
