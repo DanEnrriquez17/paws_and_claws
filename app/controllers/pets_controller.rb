@@ -5,7 +5,6 @@ class PetsController < ApplicationController
 
   def new
     @pet = Pet.new
-    raise
   end
 
   def create
@@ -15,7 +14,7 @@ class PetsController < ApplicationController
   end
 
   def show
-    
+
   end
 
   def edit
@@ -31,5 +30,5 @@ class PetsController < ApplicationController
   def params_pet
     params.require(:pet).permit(:name, :adopted, :species, :breed, :user_id)
   end
-  
+
 end

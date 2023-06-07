@@ -1,2 +1,9 @@
-<h1>Pets#new</h1>
-<p>Find me in app/views/pets/new.html.erb</p>
+<div class="p-auto bg bg-light d-flex flex-column align-items-center justify-content-center">
+  <h1>Create Adoption</h1>
+
+  <%= render "form", pet: @pet %>
+
+  <br>
+
+  <%= link_to "Back to home", root_path, class: "btn btn-dark"%>
+</div>
