@@ -25,12 +25,11 @@ class PetsController < ApplicationController
 
   def destroy
     @pet.destroy
-    # No need for app/views/restaurants/destroy.html.erb
-    redirect_to pets_path, status: :see_other
+    redirect_to pets_path, status: :see_other # I took this option from challenge from last week
   end
 
   def update
-    if @pet.update(params_pet[:pet])
+    if @pet.update(params_pet)
       redirect_to pet_path(@pet)
       else
         redirect_to edit_pet_path(@pet), status: :unprocessable_entity
