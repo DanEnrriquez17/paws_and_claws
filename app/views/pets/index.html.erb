@@ -4,5 +4,6 @@
 <div>
   <% @pets.each do |pet| %>
     <%= render pet %>
+    <%= link_to "See the pet", pet_path(pet) %>
   <% end %>
 </div>
