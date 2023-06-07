@@ -19,6 +19,10 @@ fido.user = User.last
 fido.name = "fido"
 fido.save!
 
+request_sample = AdoptionRequest.new
+request_sample.user = User.last
+request_sample.pet = Pet.first
+
 # 25.times do
 #   Event.create(
 #     title: "Title #{rand(1..100)}",
