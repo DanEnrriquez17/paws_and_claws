@@ -9,10 +9,15 @@
 user_seed_1 = User.create(email: "33@gmail.com" , password: "123456", name: "Juan", last_name: "Jones")
 user_seed_2 = User.create(email: "23@gmail.com" , password: "123456", name: "Lobo", last_name: "Wagon")
 
-# Paco = Pet.new
-# Paco.user = user_seed_1
-# Paco.name = "Paco"
-# Paco.save!
+paco = Pet.new
+paco.user = User.first
+paco.name = "paco"
+paco.save!
+
+fido = Pet.new
+fido.user = User.first
+fido.name = "fido"
+fido.save!
 
 # 25.times do
 #   Event.create(

@@ -23,8 +23,7 @@ class PetsController < ApplicationController
 
   def destroy
     @pet.destroy
-    # No need for app/views/restaurants/destroy.html.erb
-    redirect_to pets_path, status: :see_other
+    redirect_to pets_path, status: :see_other # I took this option from challenge from last week
   end
 
   def update
