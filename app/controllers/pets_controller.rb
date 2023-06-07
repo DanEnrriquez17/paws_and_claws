@@ -29,7 +29,7 @@ class PetsController < ApplicationController
   end
 
   def update
-    if @pet.update(params_pet[:pet])
+    if @pet.update(params_pet)
       redirect_to pet_path(@pet)
       else
         redirect_to edit_pet_path(@pet), status: :unprocessable_entity

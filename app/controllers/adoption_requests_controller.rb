@@ -23,11 +23,11 @@ class AdoptionRequestsController < ApplicationController
     @request = AdoptionRequest.new(request_params)
     @request.pet = @pet
     if @request.save
-      redirect_to pet_path(@pet)
+      redirect_to pet_path(@pet) #this should redirect to user's profile
       # we should add an alert that indicates request for adoption has been submitted
     else
       # I don't know if the render partial will work
-      redirect_to new_pet_adoption_request(@request), status: :unprocessable_entity
+      redirect_to pet_path(@pet), status: :unprocessable_entity
     end
   end
 

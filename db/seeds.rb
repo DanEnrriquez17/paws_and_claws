@@ -15,7 +15,7 @@ paco.name = "paco"
 paco.save!
 
 fido = Pet.new
-fido.user = User.first
+fido.user = User.last
 fido.name = "fido"
 fido.save!
 
