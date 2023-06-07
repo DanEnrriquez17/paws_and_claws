@@ -7,7 +7,6 @@ class PetsController < ApplicationController
 
   def new
     @pet = Pet.new
-    raise
   end
 
   def create
@@ -44,4 +43,5 @@ class PetsController < ApplicationController
   def set_pet
     @pet = Pet.find(params[:id])
   end
+
 end
