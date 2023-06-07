@@ -1,0 +1,54 @@
+.card-pet {
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+.card-pet > img {
+  height: 400px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.flash {
+  position: absolute;
+  width: 300px;
+  height: 50px;
+  top: 16px;
+  left: 16px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  background: rgba(238, 216, 159, 0.702);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  z-index: 1;
+}
+
+.flash span {
+  margin-left: 8px;
+}
+
+.card-pet .card-pet-infos {
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  position: relative;
+}
+
+.card-pet-infos .card-pet-user {
+  position: absolute;
+  right: 16px;
+  bottom: -20px;
+  width: 40px;
+}
+
+.btn-flat {
+  color: white;
+  padding: 8px 24px;
+  border-radius: 4px;
+  background: #ff600b;
+  transition: background 0.3s ease;
+}
