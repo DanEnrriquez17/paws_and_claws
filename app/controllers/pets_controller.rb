@@ -10,9 +10,11 @@ class PetsController < ApplicationController
   end
 
   def create
-    @pet = Pet.new(params_pet[:pet])
+    @pet = Pet.new(params_pet)
     @pet.user = current_user
-    @pet.save
+    @pet.save!
+
+
   end
 
   def show
