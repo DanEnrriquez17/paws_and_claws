@@ -15,6 +15,11 @@
       <h1><%= @pet.name %></h1>
       <h5>This is Max. Max is a lovely pet and is now up for adoption. Looking for his next wealthy owner!</h5>
     </div>
+    <%# change this h2 into a link_to with a post method %>
+    <%# link_to adoption_requests_path(@pet), method: :post %>
+    <%# access the action in the adopt request controller called create %>
+    <%# create an adopt request with an status of "pending" %>
+    <%# redirect him back to the index %>
     <h2 class="btn btn-flat" href="#">Adopt Now</h2>
     <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-pet-user avatar-bordered" />
   </div>
