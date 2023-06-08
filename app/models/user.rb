@@ -7,4 +7,6 @@ class User < ApplicationRecord
 
   has_many :adoption_requests, dependent: :destroy
   has_many :adoption_request_pets, through: :adoption_requests, source: :pet
+  validates :age, comparison: { greater_than: 15 }
+  validates :name, :last_name, :age, :preferences, :address, presence: true
 end

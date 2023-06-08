@@ -6,7 +6,7 @@ class PetsController < ApplicationController
   end
 
   def new
-    @pet = Pet.new
+    @pet = Pet.new(adopted: false)
   end
 
   def create
@@ -38,7 +38,7 @@ class PetsController < ApplicationController
 
   private
   def params_pet
-    params.require(:pet).permit(:name, :adopted, :species, :breed, :user_id)
+    params.require(:pet).permit(:name, :adopted, :species, :breed, :age, :user_id)
   end
 
   def set_pet

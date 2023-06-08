@@ -1,6 +1,7 @@
 class AdoptionRequestsController < ApplicationController
-  before_action :set_request, only: :destroy
-  before_action :set_pet, only: [:new, :create, :index]
+  before_action :set_request, only: [:destroy, :accept]
+  before_action :set_pet, only: [:new, :create, :index, :accept]
+  before_action :authenticate_user!, only: [:index]
 
   def index
     # we need to set an instance variables that pulls all of the requests
@@ -10,8 +11,7 @@ class AdoptionRequestsController < ApplicationController
     if @pet.user == current_user
       @requests = @pet.adoption_requests
     else
-      @requests = []
-      @notification = "you do not own this pet"
+      redirect_to root_path, alert: "you do not own this pet"
     end
   end
 
@@ -20,8 +20,9 @@ class AdoptionRequestsController < ApplicationController
   end
 
   def create
-    @request = AdoptionRequest.new(request_params)
+    @request = AdoptionRequest.new(status: "pending")
     @request.pet = @pet
+    @request.user = current_user
     if @request.save
       redirect_to pet_path(@pet) #this should redirect to user's profile
       # we should add an alert that indicates request for adoption has been submitted
@@ -29,6 +30,22 @@ class AdoptionRequestsController < ApplicationController
       # I don't know if the render partial will work
       redirect_to pet_path(@pet), status: :unprocessable_entity
     end
+  end
+
+  def accept
+    
+    # change all other requests statuses to rejected
+    # to do that, first create requests variable that filters out the accepted 
+    @other_requests = @pet.adoption_requests.each { |request| request != @request }
+    # then set the status of all other requests to declined
+    @other_requests.each { |request| request.update(status: "declined") }
+    # change status of request to accepted
+    @request.status = "accepted"
+    @request.save!
+    # change status of pet
+    @pet.adopted = true
+    @pet.save!
+    redirect_to @pet, alert: "#{@pet.name} has a new owner"
   end
 
   def destroy
