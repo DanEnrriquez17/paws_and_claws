@@ -1,9 +1,15 @@
-<div class="d-flex justify-content-center">
+<div class="d-flex justify-content-center pet_title">
   <h1>Welcome to paws and claws!!</h1>
 </div>
-<div>
-  <% @pets.each do |pet| %>
-    <%= render pet %>
-    <%= link_to "See the pet", pet_path(pet) %>
-  <% end %>
+<div class="container main_body">
+  <div class="row">
+    <% @pets.each do |pet| %>
+      <div class="column pet_card">
+        <div class="d-flex flex-column align-items-start justify-content-end">
+          <%= render pet %>
+          <strong><%= link_to "See the pet", pet_path(pet), class: "pet_link"%></strong>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>
