@@ -1,7 +1,17 @@
-<h1>AdoptionRequests#index</h1>
-<ul>
-<% @requests.each do |request| %>
-  <li><%= request %></li>
-<% end %>
-<ul>
-<p>Find me in app/views/adoption_requests/index.html.erb</p>
+<div class="d-flex justify-content-center pet_title">
+  <h1><%= @pet.name %>'s adoption requests!</h1>
+</div>
+<div class="container main_body">
+  <div class="row">
+    <% @requests.each_with_index do |request, index| %>
+      <div class="column pet_card">
+        <div class="d-flex flex-column align-items-start justify-content-end">
+          <h2 class="text-primary">Request #<%= index + 1%></h2>
+          <%= render "request", request: request %>
+          <%# what does this mean? request: request %>
+          <strong><%= link_to "accept request", accept_request_path(@pet, request), data: {turbo_method: :patch, turbo_confirm: "are you sure?"},class: "pet_link"%></strong>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
