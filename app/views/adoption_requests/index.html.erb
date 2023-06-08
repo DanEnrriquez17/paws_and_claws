@@ -1,7 +1,7 @@
 <h1>AdoptionRequests#index</h1>
-<%= @requests %>
+<p>user who made the request:<%= @requests[0].user.name %></p>
 <ul>
-<% raise @requests.each do |request| %>
+<% @requests.each do |request| %>
   <li><%= request %></li>
 <% end %>
 <ul>
