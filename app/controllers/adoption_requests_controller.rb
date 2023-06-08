@@ -7,7 +7,7 @@ class AdoptionRequestsController < ApplicationController
     # we need to set an instance variables that pulls all of the requests
     # for the current pet owned by the current_user
     # likely will need a if statement to determine if current user has the right to view requests
-    # or i might need this if statement to show a "view requests" button on 
+    # or i might need this if statement to show a "view requests" button on
     if @pet.user == current_user
       @requests = @pet.adoption_requests
     else
@@ -20,7 +20,7 @@ class AdoptionRequestsController < ApplicationController
   end
 
   def create
-    @request = AdoptionRequest.new(status: "pending")
+    @request = AdoptionRequest.new
     @request.pet = @pet
     @request.user = current_user
     if @request.save
@@ -33,9 +33,9 @@ class AdoptionRequestsController < ApplicationController
   end
 
   def accept
-    
+
     # change all other requests statuses to rejected
-    # to do that, first create requests variable that filters out the accepted 
+    # to do that, first create requests variable that filters out the accepted
     @other_requests = @pet.adoption_requests.each { |request| request != @request }
     # then set the status of all other requests to declined
     @other_requests.each { |request| request.update(status: "declined") }

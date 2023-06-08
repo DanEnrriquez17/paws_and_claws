@@ -17,7 +17,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_08_185702) do
   create_table "adoption_requests", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "pet_id", null: false
-    t.string "status"
+    t.string "status", default: "pending"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["pet_id"], name: "index_adoption_requests_on_pet_id"
@@ -26,7 +26,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_08_185702) do
 
   create_table "pets", force: :cascade do |t|
     t.string "name"
-    t.boolean "adopted"
+    t.boolean "adopted", default: false, null: false
     t.string "species"
     t.string "breed"
     t.bigint "user_id", null: false
