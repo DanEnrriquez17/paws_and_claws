@@ -5,5 +5,6 @@ class Pet < ApplicationRecord
   has_many :users, through: :adoption_requests
 
   validates :name, :species, :breed, :age, presence: true
-  validates :category, inclusion: { in: CATEGORIES }
+  validates :species, inclusion: { in: CATEGORIES }
+  has_one_attached :photo
 end
