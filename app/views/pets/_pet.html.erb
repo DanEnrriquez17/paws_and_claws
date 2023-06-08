@@ -1,8 +1,8 @@
 <div id="<%= dom_id pet %>">
-  <img class="pet_img" src="app/assets/images/eins.JPG" alt="">
+  <%= image_tag "eins.jpg", class: "pet_img"%>
   <p>
     <strong>Pet name:</strong><%= pet.name %><br>
-    <strong>Pet owner:</strong><%= pet.user_id %><br>
+    <strong>Pet owner:</strong><%= pet.user.name %><br>
     <strong>Breed:</strong><%= pet.breed %><br>
     <strong>Species:</strong><%= pet.species %><br>
   </p>
