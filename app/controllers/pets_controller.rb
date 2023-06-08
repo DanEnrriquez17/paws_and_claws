@@ -6,15 +6,14 @@ class PetsController < ApplicationController
   end
 
   def new
-    @pet = Pet.new(adopted: false)
+    @pet = Pet.new
   end
 
   def create
     @pet = Pet.new(params_pet)
     @pet.user = current_user
     @pet.save!
-
-
+    redirect_to @pet, alert: "#{@pet.name} is up for adoption!"
   end
 
   def show
