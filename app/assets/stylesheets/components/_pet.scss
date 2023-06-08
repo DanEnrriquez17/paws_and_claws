@@ -1,3 +1,50 @@
+.pet_title{
+  background-color: antiquewhite;
+  padding: 10px;
+}
 .pet_card{
-  background-color: red;
+  display: flexbox;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 300px;
+  height: 450px;
+  box-shadow: 1px 1px 5px black;
+  margin: 15px 10px;
+  border-radius: 10px;
+  &:hover{
+    background-color: rgba(195, 195, 195, 0.2);
+    width: 310px;
+    height: 460px;
+    box-shadow: 1px 1px 10px rgba(195, 195, 195, 0.5);
+    .pet_link{
+      background-color: rgb(255, 169, 56);
+      color: whitesmoke;
+      padding: 7px;
+      font-size: larger;
+      text-shadow: 0px 0px 2px black;
+    }
+  }
+}
+.pet_info{
+  display: flexbox;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+  width: 200px;
+  height: 200px;
+  margin: 0px;
+  line-height: 0.8;
+  box-shadow: 0px 0px 10px black;
+}
+.pet_img{
+  height: 290px;
+  width: 250px;
+  margin: 5px auto;
+}
+.pet_link{
+  text-align: center;
+  text-decoration: none;
+  color: black;
+  margin-top: 0px;
+  border-radius: 10px;
 }
