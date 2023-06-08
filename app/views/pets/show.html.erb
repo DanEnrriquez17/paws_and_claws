@@ -2,25 +2,25 @@
   <%= stylesheet_link_tag 'pet_show' %>
 </head>
 
-<div class="card-pet">
-  <div class="flash flash-success alert alert-dismissible fade show">
-    <span><strong>Yay!</strong> 🎉 This pet is available for adoption</span>
-    <a data-bs-dismiss="alert" aria-label="Close">
-      <i class="fas fa-times"></i>
-    </a>
+<div class="container">
+  <div class= "pet_show_bar">
+    <h1><%= @pet.name %>
+    </h1>
   </div>
-  <img src="https://images.unsplash.com/photo-1618359057154-e21ae64350b6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2370&q=80" />
-  <div class="card-pet-infos">
-    <div>
-      <h1><%= @pet.name %></h1>
-      <h5>This is Max. Max is a lovely pet and is now up for adoption. Looking for his next wealthy owner!</h5>
+  <img class="pet-img" src="https://images.unsplash.com/photo-1618359057154-e21ae64350b6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2370&q=80" />
+     <div class= "pet-title w-100"><h2> Get to know <%= @pet.name %></div>
+  <div class="container pet-grid">
+      </h2>
+    <div class="row pet-row d-flex justify-content-between">
+      <div class="col-4 pet-details">
+        <p>PET DETAIL ONE</p>
+      </div>
+      <div class="col-4 pet-details">
+        <p>PET DETAIL TWO</p>
+      </div>
+      <div class="col-4 pet-details">
+        <p>PET DETAIL THREE</p>
+      </div>
     </div>
-    <%# change this h2 into a link_to with a post method %>
-    <%# link_to adoption_requests_path(@pet), method: :post %>
-    <%# access the action in the adopt request controller called create %>
-    <%# create an adopt request with an status of "pending" %>
-    <%# redirect him back to the index %>
-    <h2 class="btn btn-flat" href="#">Adopt Now</h2>
-    <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-pet-user avatar-bordered" />
-  </div>
+      </div>
 </div>

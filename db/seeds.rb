@@ -20,9 +20,9 @@
 # fido.name = "fido"
 # fido.save!
 
-# request_sample = AdoptionRequest.new
-# request_sample.user = User.last
-# request_sample.pet = Pet.first
+request_sample = AdoptionRequest.new
+request_sample.user = User.last
+request_sample.pet = Pet.second
 
 # Dan Seed
 
