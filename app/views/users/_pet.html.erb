@@ -1,0 +1,11 @@
+<div id=""> 
+  <% if pet.photo.attached? %>
+    <%= cl_image_tag pet.photo.key, class: "pet_img"%>
+  <% end %>
+  <p>
+    <strong>Pet name:</strong><%= pet.name %><br>
+    <strong>Pet owner:</strong><%= pet.user.name %><br>
+    <strong>Breed:</strong><%= pet.breed %><br>
+    <strong>Species:</strong><%= pet.species %><br>
+  </p>
+</div>
