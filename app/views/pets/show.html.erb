@@ -24,12 +24,16 @@
       <div class="col-4 pet-details">
         <p>PET DETAIL THREE</p>
       </div>
-      <% if current_user.owns_this_pet?(@pet) %>
-        <p>You own this pet</p>
-      <% elsif current_user.has_an_active_request_with_this_(@pet) %>
-        <%= pet_requests_status(@pet) %>
+      <% if current_user %>
+        <% if current_user.owns_this_pet?(@pet) %>
+          <p>You own this pet</p>
+        <% elsif current_user.has_an_active_request_with_this_(@pet) %>
+          <%= pet_requests_status(@pet) %>
+        <% else %>
+            <%= link_to "Adopt me!", pet_adoption_requests_path(@pet), data: {turbo_method: :post} %>
+        <% end %>
       <% else %>
-          <%= link_to "Adopt me!", pet_adoption_requests_path(@pet), data: {turbo_method: :post} %>
+        <p>If you want to adopt a pet you need to be logged in</p>
       <% end %>
     </div>
   </div>
