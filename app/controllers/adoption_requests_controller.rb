@@ -1,6 +1,6 @@
 class AdoptionRequestsController < ApplicationController
   before_action :set_request, only: [:destroy, :accept]
-  before_action :set_pet, only: [:new, :create, :index, :accept]
+  before_action :set_pet, only: [:new, :create, :index, :accept, :destroy]
   before_action :authenticate_user!, only: [:index]
 
   def index
@@ -9,7 +9,11 @@ class AdoptionRequestsController < ApplicationController
     # likely will need a if statement to determine if current user has the right to view requests
     # or i might need this if statement to show a "view requests" button on
     if @pet.user == current_user
-      @requests = @pet.adoption_requests
+      if @pet.adopted == true
+        @requests = @pet.adoption_requests.where(status: "accepted")
+      else
+        @requests = @pet.adoption_requests
+      end
     else
       redirect_to root_path, alert: "you do not own this pet"
     end
@@ -24,7 +28,7 @@ class AdoptionRequestsController < ApplicationController
     @request.pet = @pet
     @request.user = current_user
     if @request.save
-      redirect_to pet_path(@pet) #this should redirect to user's profile
+      redirect_to pet_path(@pet), alert: "#{@pet.name} requested for adoption" #this should redirect to user's profile
       # we should add an alert that indicates request for adoption has been submitted
     else
       # I don't know if the render partial will work
@@ -45,12 +49,13 @@ class AdoptionRequestsController < ApplicationController
     # change status of pet
     @pet.adopted = true
     @pet.save!
-    redirect_to @pet, alert: "#{@pet.name} has a new owner"
+    redirect_to @pet
+    #alert: "#{@pet.name} has a new owner"
   end
 
   def destroy
     @request.destroy
-    redirect_to pet_path(@request.pet) # we should add an alert message here 'status: :see_other'
+    redirect_to @pet, alert: "you withdrew your adoption request for #{@pet.name}"
   end
 
   private

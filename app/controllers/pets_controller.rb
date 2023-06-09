@@ -2,7 +2,7 @@ class PetsController < ApplicationController
   before_action :set_pet, only: [:show, :edit, :update, :destroy]
 
   def index
-    @pets = Pet.all
+    @pets = Pet.available_and_recently_added
   end
 
   def new
@@ -13,7 +13,7 @@ class PetsController < ApplicationController
     @pet = Pet.new(params_pet)
     @pet.user = current_user
     @pet.save!
-    redirect_to @pet, alert: "#{@pet.name} is up for adoption!"
+    redirect_to @pet
   end
 
   def show

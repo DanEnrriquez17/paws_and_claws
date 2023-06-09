@@ -5,10 +5,24 @@
 <div class="container w-75">
   <div class="row status-row d-flex w-75 justify-content-between">
     <div class="col-8 pet-available">
+   <% if @pet.adopted? %>
+        <h1><%= @pet.name %> <span class="badge bg-info">Adopted</span></h1>
+    <% else  %>
       <h1><%= @pet.name %> <span class="badge bg-success">Available</span></h1>
+      <% end %>
     </div>
     <div class="col-4 pet-adopt">
-      <h1><%= link_to "Adopt me!", create_request_path(@pet), method: :post, class: "badge bg-warning adopt-button" %></h1>
+      <% if current_user %>
+        <% if current_user.owns_this_pet?(@pet) %>
+          <p></p>
+        <% elsif current_user.has_an_active_request_with_this_(@pet) %>
+          <%= pet_requests_status(@pet) %>
+        <% else %>
+            <%= link_to "Adopt me!", create_request_path(@pet), data: {turbo_method: :post}, class: "badge bg-warning adopt-button" %>
+        <% end %>
+      <% else %>
+        <p>If you want to adopt a pet you need to be logged in</p>
+      <% end %>
     </div>
   </div> <!-- status-row ends here -->
   <div class="container pet-photo-container w-75">
@@ -24,11 +38,7 @@
       </div> <!-- pet-details ends here -->
       <div class="row pet-row d-flex w-75">
         <div class="col-8-auto text-wrap pet-description w-100">
-          <strong><%= @pet.name %>'s Description:</strong> Meet Jennifer, a tiny poodle ball of chaos who believes that slippers are
+          <strong><%= @pet.name %>'s Description:</strong> Meet <%= @pet.name %>, a tiny poodle ball of chaos who believes that slippers are
           an endangered species and should be 'disposed of' promptly. Adoption warning: your life may be filled with relentless cuddles, laughter and stolen socks!
         </div>
       </div>
-  </div>
-</div>
-
- <#h1><#%= @pet.name %> <#span class="badge bg-success">Available</#span></#h1>
