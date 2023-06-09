@@ -4,6 +4,6 @@ class UsersController < ApplicationController
   end
 
   def mypets
-    @my_pets = current_user.owned_pets
+    @my_pets = current_user.owned_pets.select {|pet| !pet.adopted?}
   end
 end
