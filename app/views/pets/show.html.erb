@@ -21,7 +21,7 @@
       <div class="col-4 pet-details">
         <p>PET DETAIL THREE</p>
       </div>
-      <%= link_to "Adopt me!", create_request_path(@pet), method: :post %>
+      <%= link_to "Adopt me!", pet_adoption_requests_path(@pet), data: {turbo_method: :post} %>
     </div>
       </div>
 </div>
