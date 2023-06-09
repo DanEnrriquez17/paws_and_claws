@@ -1,6 +1,6 @@
 class AdoptionRequestsController < ApplicationController
   before_action :set_request, only: [:destroy, :accept]
-  before_action :set_pet, only: [:new, :create, :index, :accept]
+  before_action :set_pet, only: [:new, :create, :index, :accept, :destroy]
   before_action :authenticate_user!, only: [:index]
 
   def index
@@ -50,7 +50,7 @@ class AdoptionRequestsController < ApplicationController
 
   def destroy
     @request.destroy
-    redirect_to pet_path(@request.pet) # we should add an alert message here 'status: :see_other'
+    redirect_to @pet, alert: "you withdrew your adoption request for #{@pet.name}"
   end
 
   private
