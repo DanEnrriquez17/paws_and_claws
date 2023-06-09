@@ -1,5 +1,5 @@
 class Pet < ApplicationRecord
-  CATEGORIES = ["Dog", "Cat", "Both"]
+  CATEGORIES = ["Dog", "Cat"]
   belongs_to :user
   has_many :adoption_requests
   has_many :users, through: :adoption_requests
