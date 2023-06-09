@@ -18,7 +18,7 @@
         <% elsif current_user.has_an_active_request_with_this_(@pet) %>
           <%= pet_requests_status(@pet) %>
         <% else %>
-            <%= link_to "Adopt me!", create_request_path(@pet), data: {turbo_method: :post}, class: "badge bg-warning adopt-button" %>
+           <h1> <%= link_to "Adopt me!", create_request_path(@pet), data: {turbo_method: :post}, class: "badge bg-warning adopt-button" %></h1>
         <% end %>
       <% else %>
         <p>If you want to adopt a pet you need to be logged in</p>
