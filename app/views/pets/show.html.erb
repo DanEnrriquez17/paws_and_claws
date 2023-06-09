@@ -2,28 +2,43 @@
   <%= stylesheet_link_tag 'pet_show' %>
 </head>
 
-<div class="container">
-  <div class= "pet_show_bar">
-    <h1><%= @pet.name %>
-    </h1>
-  </div>
-    <% if @pet.photo.attached? %>
-      <%= cl_image_tag @pet.photo.key, class: "pet-photo w-100"%>
-    <% end %>
-     <div class= "pet-title w-100"><h2> Get to know <%= @pet.name %></div>
-  <div class="container pet-grid  w-100">
-      </h2>
-    <div class="row pet-row d-flex justify-content-between">
-      <div class="col-4 pet-details">
-        <p>PET DETAIL ONE</p>
-      </div>
-      <div class="col-4 pet-details">
-        <p>PET DETAIL TWO</p>
-      </div>
-      <div class="col-4 pet-details">
-        <p>PET DETAIL THREE</p>
-      </div>
-      <%= link_to "Adopt me!", pet_adoption_requests_path(@pet), data: {turbo_method: :post} %>
+<div class="container w-75">
+  <div class="row status-row d-flex w-75 justify-content-between">
+    <div class="col-8 pet-available">
+   <% if @pet.adopted? %>
+        <h1><%= @pet.name %> <span class="badge bg-info">Adopted</span></h1>
+    <% else  %>
+      <h1><%= @pet.name %> <span class="badge bg-success">Available</span></h1>
+      <% end %>
     </div>
+    <div class="col-4 pet-adopt">
+      <% if current_user %>
+        <% if current_user.owns_this_pet?(@pet) %>
+          <p></p>
+        <% elsif current_user.has_an_active_request_with_this_(@pet) %>
+          <%= pet_requests_status(@pet) %>
+        <% else %>
+            <%= link_to "Adopt me!", create_request_path(@pet), data: {turbo_method: :post}, class: "badge bg-warning adopt-button" %>
+        <% end %>
+      <% else %>
+        <p>If you want to adopt a pet you need to be logged in</p>
+      <% end %>
+    </div>
+  </div> <!-- status-row ends here -->
+  <div class="container pet-photo-container w-75">
+    <%= cl_image_tag @pet.photo.key, class: "pet-photo img-fluid"%>
+  </div>
+  <div class= "pet-title w-75">
+    <h2> Get to know <%= @pet.name %></h2>
+  </div>
+  <div class="container pet-grid">
+    <div class= "pet-details w-75">
+      <p class= "details-headers">Pet Details:</p>
+      <strong><%= @pet.species %> Age:</strong> <%= @pet.age %> | <strong><%= @pet.species %> Breed:</strong> <%= @pet.breed %> </p>
+      </div> <!-- pet-details ends here -->
+      <div class="row pet-row d-flex w-75">
+        <div class="col-8-auto text-wrap pet-description w-100">
+          <strong><%= @pet.name %>'s Description:</strong> Meet <%= @pet.name %>, a tiny poodle ball of chaos who believes that slippers are
+          an endangered species and should be 'disposed of' promptly. Adoption warning: your life may be filled with relentless cuddles, laughter and stolen socks!
+        </div>
       </div>
-</div>
