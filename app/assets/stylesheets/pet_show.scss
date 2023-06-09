@@ -4,33 +4,37 @@
   align-items: center;
   justify-content: center;
   margin: 0 auto;
-  width: 100%;
   height: 100%;
-  padding: 0 40px;
   background-color: white;
 }
-
+.pet-photo-container {
+  padding: 0 0;
+}
 .pet-photo {
   border-radius: 10px;
-  object-fit: contain;
+  height: auto;
+  padding: 0 0;
 }
 
 .pet_show_bar {
   padding-top: 10px;
   display: flex;
-  margin: 0 auto;
+  margin-left: 20px;
   width: 100%;
   height: 100%;
 }
 
 .pet-row{
   height: 100%;
-  width: 100vh;
-  padding-top: 20px;
+  padding-top: 0px;
 }
 
-.pet-details {
-  width: 250px;
+.status-row{
+  height: 100%;
+  padding-top: 20px;
+}
+.pet-description{
+  width: auto;
   height: 100px;
   background-color: white;
   border: solid .5px rgb(209, 209, 209);
@@ -38,7 +42,48 @@
   box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;
 }
 
-.pet-title {
-  padding-top: 10px;
-  justify-content: flex-start
+.pet-available {
+  padding: 0
 }
+.pet-details {
+  margin-left: 10px;
+}
+.pet-title {
+  margin-left: 20px;
+  padding-top: 10px;
+  justify-content: flex-start;
+}
+
+.pet-adopt {
+  align-items: right;
+  padding: 0
+}
+
+.adopt-button {
+  text-decoration: none;
+  margin-right: 5px;
+}
+
+h1, h2 {
+  font-family: 'poppins', sans-serif;
+  font-weight: 700;
+}
+p {
+  font-family: 'poppins', sans-serif;
+  line-height: 20px;
+  margin-bottom: -4rem;
+}
+
+.details-headers {
+  color: rgb(149, 149, 149);
+  font-family: 'poppins', sans-serif;
+  font-weight: 800;
+  margin: 0;
+}
+
+$theme-colors: (
+  "success": rgb(39, 235, 22),  /* Replace #yourColor with your preferred color code */
+  // You can override other color variables here, or add new ones
+);
+
+@import "bootstrap/scss/bootstrap";

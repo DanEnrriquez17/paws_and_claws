@@ -49,7 +49,8 @@ class AdoptionRequestsController < ApplicationController
     # change status of pet
     @pet.adopted = true
     @pet.save!
-    redirect_to @pet, alert: "#{@pet.name} has a new owner"
+    redirect_to @pet
+    #alert: "#{@pet.name} has a new owner"
   end
 
   def destroy
