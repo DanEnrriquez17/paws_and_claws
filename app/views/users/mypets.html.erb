@@ -1,0 +1,23 @@
+<div class="d-flex justify-content-center pet_title">
+  <h1><%= current_user.name %>'s pets up for adoption</h1>
+</div>
+<div class="container main_body">
+  <div class="row">
+    <% @my_pets.each_with_index do |pet, index| %>
+      <div class="column pet_card">
+        <div class="d-flex flex-column align-items-start justify-content-end">
+          <h2 class="text-primary">Pet for adoption #<%= index + 1%></h2>
+          <%# <%= render "pet", request: request %>
+           <p>
+            <strong>Pet name:</strong><%= pet.name %><br>
+            <strong>Pet owner:</strong><%= pet.user.name %><br>
+            <strong>Breed:</strong><%= pet.breed %><br>
+            <strong>Species:</strong><%= pet.species %><br>
+          </p>
+          <%# what does this mean? request: request %>
+          <strong><%= link_to "see adoption requests", pet_adoption_requests_path(pet),class: "pet_link"%></strong>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   end
 
   get "my_requests", to: "users#myrequests", as: "my_requests"
+  get "my_pets", to: "users#mypets", as: "my_pets"
   post "pets/:pet_id/create_request/", to: "adoption_requests#create", as: "create_request"
   patch "pets/:pet_id/accept_request/:id", to: "adoption_requests#accept", as: "accept_request"
 #get "users/:id/adoption_requests/index", to: "users#adoption_requests_index", as: "users_req_made"
