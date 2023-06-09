@@ -9,7 +9,11 @@
           <h2 class="text-primary">Request #<%= index + 1%></h2>
           <%= render "request", request: request %>
           <%# what does this mean? request: request %>
-          <strong><%= link_to "accept request", accept_request_path(@pet, request), data: {turbo_method: :patch, turbo_confirm: "are you sure?"},class: "pet_link"%></strong>
+          <% if request.status == "accepted" %>
+            <h2>This pet has been adopted</h2>
+          <% else %>
+            <strong><%= link_to "accept request", accept_request_path(@pet, request), data: {turbo_method: :patch, turbo_confirm: "are you sure?"},class: "pet_link"%></strong>
+          <% end %>
         </div>
       </div>
     <% end %>

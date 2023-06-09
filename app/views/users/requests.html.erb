@@ -1,0 +1,7 @@
+<ul>
+  <% @pets.each do |pet| %>
+    <% pet.adoption_requests.each do |ar| %>
+      <li><%= ar.user.name %> wants to adopt <%= pet.name %></li>
+    <% end %>
+  <% end %>
+</ul>
