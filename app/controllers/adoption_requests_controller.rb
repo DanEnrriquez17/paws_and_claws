@@ -24,7 +24,7 @@ class AdoptionRequestsController < ApplicationController
     @request.pet = @pet
     @request.user = current_user
     if @request.save
-      redirect_to pet_path(@pet) #this should redirect to user's profile
+      redirect_to pet_path(@pet), alert: "#{@pet.name} requested for adoption" #this should redirect to user's profile
       # we should add an alert that indicates request for adoption has been submitted
     else
       # I don't know if the render partial will work
