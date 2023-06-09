@@ -6,4 +6,5 @@ class Pet < ApplicationRecord
 
   validates :name, :species, :breed, :age, presence: true
   validates :species, inclusion: { in: CATEGORIES }
+  has_one_attached :photo
 end
