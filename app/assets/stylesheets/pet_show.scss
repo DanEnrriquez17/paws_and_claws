@@ -10,9 +10,9 @@
   background-color: white;
 }
 
-.pet-img {
-  object-fit: cover;
+.pet-photo {
   border-radius: 10px;
+  object-fit: contain;
 }
 
 .pet_show_bar {
