@@ -2,7 +2,7 @@ class PetsController < ApplicationController
   before_action :set_pet, only: [:show, :edit, :update, :destroy]
 
   def index
-    @pets = Pet.all
+    @pets = Pet.available_and_recently_added
   end
 
   def new

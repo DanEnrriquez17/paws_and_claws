@@ -1,7 +1,9 @@
 <div id="<%= dom_id pet %>">
-  <% if pet.photo.attached? %>
-    <%= cl_image_tag pet.photo.key, class: "pet_img"%>
-  <% end %>
+  <div class="img-container">
+    <% if pet.photo.attached? %>
+      <%= cl_image_tag pet.photo.key, class: "pet_img"%>
+    <% end %>
+  </div>
   <p>
     <strong>Pet name:</strong><%= pet.name %><br>
     <strong>Pet owner:</strong><%= pet.user.name %><br>

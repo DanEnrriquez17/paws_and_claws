@@ -9,7 +9,11 @@ class AdoptionRequestsController < ApplicationController
     # likely will need a if statement to determine if current user has the right to view requests
     # or i might need this if statement to show a "view requests" button on
     if @pet.user == current_user
-      @requests = @pet.adoption_requests
+      if @pet.adopted == true
+        @requests = @pet.adoption_requests.where(status: "accepted")
+      else
+        @requests = @pet.adoption_requests
+      end
     else
       redirect_to root_path, alert: "you do not own this pet"
     end
