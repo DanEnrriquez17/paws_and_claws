@@ -1,5 +1,5 @@
 class Pet < ApplicationRecord
-  CATEGORIES = ["Dog", "Cat", "Both"]
+  CATEGORIES = ["Dog", "Cat"]
 
   scope :available_and_recently_added, -> { available.order(created_at: :desc) }
   scope :available, -> { where(adopted: false) }
