@@ -10,9 +10,10 @@
     <% if @pet.photo.attached? %>
       <%= cl_image_tag @pet.photo.key, class: "pet-photo w-100"%>
     <% end %>
-     <div class= "pet-title w-100"><h2> Get to know <%= @pet.name %></div>
+  <div class= "pet-title w-100">
+    <h2> Get to know <%= @pet.name %></h2>
+  </div>
   <div class="container pet-grid  w-100">
-      </h2>
     <div class="row pet-row d-flex justify-content-between">
       <div class="col-4 pet-details">
         <p>PET DETAIL ONE</p>
@@ -23,7 +24,13 @@
       <div class="col-4 pet-details">
         <p>PET DETAIL THREE</p>
       </div>
-      <%= link_to "Adopt me!", pet_adoption_requests_path(@pet), data: {turbo_method: :post} %>
+      <% if current_user.owns_this_pet?(@pet) %>
+        <p>You own this pet</p>
+      <% elsif current_user.has_an_active_request_with_this_(@pet) %>
+        <%= pet_requests_status(@pet) %>
+      <% else %>
+          <%= link_to "Adopt me!", pet_adoption_requests_path(@pet), data: {turbo_method: :post} %>
+      <% end %>
     </div>
-      </div>
+  </div>
 </div>
